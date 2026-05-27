@@ -10,7 +10,7 @@ Tracks all identified issues and improvements for the `s3-sunriver-upload` Raspb
 
 | # | Task | State | Notes |
 |---|------|-------|-------|
-| 1.1 | Remove `keys.sh` from repo and git history | `todo` | Credentials were passed as CLI args, visible in process list and bash history |
+| 1.1 | Remove `keys.sh` from repo and git history | `in-progress` | Credentials were passed as CLI args, visible in process list and bash history |
 | 1.2 | Rotate the AWS credentials that were committed | `todo` | Treat as compromised; generate new key pair in IAM |
 | 1.3 | Switch to `~/.aws/credentials` file or IAM role auth | `todo` | Never pass secrets as arguments or env vars set in scripts |
 | 1.4 | Scope IAM policy to minimum required permissions | `todo` | Only `s3:PutObject` + `s3:DeleteObject` on `sunriver-display-s3-prod/public/*` |
