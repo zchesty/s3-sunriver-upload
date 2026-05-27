@@ -2,14 +2,23 @@
 
 This repository is a Raspberry Pi photo uploader that captures images at dawn/dusk intervals and uploads them to an Amazon S3 bucket. The codebase dates from 2020 and is undergoing a phased revitalization tracked in `REVITALIZATION.md`.
 
+## Git rules
+
+**Never push directly to `master`.** All changes must go through a pull request. Always:
+
+1. Create a feature branch: `git checkout -b <branch-name>`
+2. Commit changes there
+3. Push the branch and open a PR
+4. Wait for the PR to be merged — do not push the changes to `master` yourself
+
 ## Working on this project
 
 All planned work is tracked in `REVITALIZATION.md`. Before starting any task:
 
 1. Find the relevant item(s) in the checklist
 2. Update the `State` column to `in-progress`
-3. Do the work on the `claude/raspi-s3-uploader-review-R1kBl` branch (or a branch per phase)
-4. Update the `State` column to `done` when the work is merged
+3. Create a branch named after the task (e.g. `revitalize/3.1-fix-bucket-wipe`)
+4. Update the `State` column to `done` when the PR is merged
 
 ### State values
 
