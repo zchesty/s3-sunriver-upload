@@ -25,7 +25,7 @@ Tracks all identified issues and improvements for the `s3-sunriver-upload` Raspb
 | 2.2 | Migrate from `astral` 1.x to 3.x | `todo` | Breaking API change — location and sun() interfaces changed significantly |
 | 2.3 | Replace `picamera` with `picamera2` | `todo` | `picamera` is deprecated on modern Pi OS (Bookworm+) |
 | 2.4 | Regenerate `requirements.txt` with current pinned versions | `todo` | boto3, botocore, pytz, python-dateutil all need updates |
-| 2.5 | Add `pyvenv.cfg` to `.gitignore` | `todo` | Virtual environment config should not be in source control |
+| 2.5 | Add `pyvenv.cfg` to `.gitignore` | `in-progress` | Virtual environment config should not be in source control |
 
 ---
 
