@@ -37,7 +37,7 @@ Tracks all identified issues and improvements for the `s3-sunriver-upload` Raspb
 | 3.2 | Fix `time_utils.getDayLight()` return value | `todo` | Function returns the location object instead of the sun timing dict — broken/dead code |
 | 3.3 | Wire `time_utils` into main script or delete it | `todo` | Currently unused; duplicated inline in `pic-script.py` |
 | 3.4 | Delete `s3_utils.py` or use it | `todo` | `clearBucket()` was extracted but never imported; orphaned dead code |
-| 3.5 | Delete `test2.py` and `test.txt` | `todo` | Leftover development scaffolding committed to repo |
+| 3.5 | Delete `test2.py` and `test.txt` | `in-progress` | Leftover development scaffolding committed to repo |
 | 3.6 | Remove or fix `datetime_astral_test.py` | `todo` | Decide if this becomes a proper test or gets deleted |
 
 ---
