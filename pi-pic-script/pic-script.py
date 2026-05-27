@@ -36,8 +36,7 @@ while 1:
             camera.annotate_text = fileName
             camera.capture(fileName)
 
-            bucket.objects.all().delete()
-            bucket.upload_file(fileName,'public/' + fileName)
+            bucket.upload_file(fileName, 'public/current.jpg')
             os.remove(fileName)
 
             pictures = pictures + 1
