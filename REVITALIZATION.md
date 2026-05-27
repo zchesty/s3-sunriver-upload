@@ -33,7 +33,7 @@ Tracks all identified issues and improvements for the `s3-sunriver-upload` Raspb
 
 | # | Task | State | Notes |
 |---|------|-------|-------|
-| 3.1 | Replace bucket-wipe-on-upload with fixed key overwrite | `todo` | `bucket.objects.all().delete()` on every photo is destructive; upload to `public/current.jpg` instead |
+| 3.1 | Replace bucket-wipe-on-upload with fixed key overwrite | `in-progress` | `bucket.objects.all().delete()` on every photo is destructive; upload to `public/current.jpg` instead |
 | 3.2 | Fix `time_utils.getDayLight()` return value | `todo` | Function returns the location object instead of the sun timing dict — broken/dead code |
 | 3.3 | Wire `time_utils` into main script or delete it | `todo` | Currently unused; duplicated inline in `pic-script.py` |
 | 3.4 | Delete `s3_utils.py` or use it | `todo` | `clearBucket()` was extracted but never imported; orphaned dead code |
