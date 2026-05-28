@@ -1,7 +1,7 @@
 import boto3
 import os
 from time import sleep, strftime
-from picamera import PiCamera
+from picamera2 import Picamera2
 import datetime
 import pytz
 import astral
@@ -12,8 +12,9 @@ l = astral.Location((city_name, 'USA', 43.8694, -121.4334, 'US/Pacific', 4164)) 
 
 pst=pytz.timezone('US/Pacific')
 
-camera = PiCamera()
-camera.resolution = (1024, 768)
+camera = Picamera2()
+camera.configure(camera.create_still_configuration(main={"size": (1024, 768)}))
+camera.start()
 
 bucketName = 'sunriver-display-s3-prod'
 s3 = boto3.resource('s3')
@@ -33,8 +34,7 @@ while 1:
             print('Sun is up take a photo. Count: %s' % (str(pictures)))
             timeStamp = strftime("%Y-%m-%d_%X")     # YYYY-mm-dd_time
             fileName = '8_towhee_' + timeStamp + '.jpg'
-            camera.annotate_text = fileName
-            camera.capture(fileName)
+            camera.capture_file(fileName)
 
             bucket.upload_file(fileName, 'public/current.jpg')
             os.remove(fileName)
