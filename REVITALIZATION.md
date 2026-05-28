@@ -38,7 +38,7 @@ Tracks all identified issues and improvements for the `s3-sunriver-upload` Raspb
 | 3.3 | Wire `time_utils` into main script or delete it | `todo` | Currently unused; duplicated inline in `pic-script.py` |
 | 3.4 | Delete `s3_utils.py` or use it | `in-progress` | `clearBucket()` was extracted but never imported; orphaned dead code |
 | 3.5 | Delete `test2.py` and `test.txt` | `done` | Leftover development scaffolding committed to repo |
-| 3.6 | Remove or fix `datetime_astral_test.py` | `todo` | Decide if this becomes a proper test or gets deleted |
+| 3.6 | Remove or fix `datetime_astral_test.py` | `in-progress` | Decide if this becomes a proper test or gets deleted |
 
 ---
 
