@@ -22,8 +22,8 @@ Tracks all identified issues and improvements for the `s3-sunriver-upload` Raspb
 | # | Task | State | Notes |
 |---|------|-------|-------|
 | 2.1 | Upgrade to Python 3.11 or 3.12 | `todo` | Currently pinned to Python 3.5.3 (EOL Oct 2020) |
-| 2.2 | Migrate from `astral` 1.x to 3.x | `todo` | Breaking API change — location and sun() interfaces changed significantly |
-| 2.3 | Replace `picamera` with `picamera2` | `todo` | `picamera` is deprecated on modern Pi OS (Bookworm+) |
+| 2.2 | Migrate from `astral` 1.x to 3.x | `in-progress` | Breaking API change — location and sun() interfaces changed significantly |
+| 2.3 | Replace `picamera` with `picamera2` | `in-progress` | `picamera` is deprecated on modern Pi OS (Bookworm+) |
 | 2.4 | Regenerate `requirements.txt` with current pinned versions | `todo` | boto3, botocore, pytz, python-dateutil all need updates |
 | 2.5 | Add `pyvenv.cfg` to `.gitignore` | `done` | Virtual environment config should not be in source control |
 

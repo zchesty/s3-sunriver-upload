@@ -1,7 +1,8 @@
-import astral
+from astral import LocationInfo
+from astral.sun import sun
+import pytz
 
 
 def getDayLight(date):
-    city_name = 'SunriverOR'
-    l = astral.Location((city_name, 'USA', 43.8694, -121.4334, 'US/Pacific', 4164))
-    return l.sun(date, local=True)
+    location = LocationInfo('Sunriver', 'USA', 'US/Pacific', 43.8694, -121.4334)
+    return sun(location.observer, date=date, tzinfo=pytz.timezone('US/Pacific'))

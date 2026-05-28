@@ -1,19 +1,27 @@
+import logging
+import logging.handlers
 import boto3
 import os
 from time import sleep, strftime
-from picamera import PiCamera
+from picamera2 import Picamera2
 import datetime
 import pytz
-import astral
+from astral import LocationInfo
+from astral.sun import sun as sun_times
 
-city_name = 'SunriverOR'
-# create astral location object for sunriver Oregon
-l = astral.Location((city_name, 'USA', 43.8694, -121.4334, 'US/Pacific', 4164)) # name, region, lat, long, timezone, elevation
+handler = logging.handlers.RotatingFileHandler(
+    '/var/log/sunriver-upload.log', maxBytes=1_000_000, backupCount=3
+)
+logging.basicConfig(handlers=[handler], level=logging.INFO,
+                    format='%(asctime)s %(levelname)s %(message)s')
+
+location = LocationInfo('Sunriver', 'USA', 'US/Pacific', 43.8694, -121.4334)
 
 pst=pytz.timezone('US/Pacific')
 
-camera = PiCamera()
-camera.resolution = (1024, 768)
+camera = Picamera2()
+camera.configure(camera.create_still_configuration(main={"size": (1024, 768)}))
+camera.start()
 
 bucketName = 'sunriver-display-s3-prod'
 s3 = boto3.resource('s3')
@@ -21,20 +29,19 @@ bucket = s3.Bucket(bucketName)
 
 while 1:
     dateToday = datetime.date.today() # get todays date
-    sunInfo = l.sun(dateToday, local=True) # Get Sun information for Location
+    sunInfo = sun_times(location.observer, date=dateToday, tzinfo=pytz.timezone('US/Pacific')) # Get Sun information for Location
 
     pictures = 1
     now = pst.localize(datetime.datetime.now()) # get the time of now
 
     while now < sunInfo['dusk']: # While it is earlier than dusk repeat
         if now < sunInfo['dawn']:
-            print('Sun has not risen. No picture taken')
+            logging.info('Sun has not risen; skipping capture')
         else:
             print('Sun is up take a photo. Count: %s' % (str(pictures)))
             timeStamp = strftime("%Y-%m-%d_%X")     # YYYY-mm-dd_time
             fileName = '8_towhee_' + timeStamp + '.jpg'
-            camera.annotate_text = fileName
-            camera.capture(fileName)
+            camera.capture_file(fileName)
 
             bucket.upload_file(fileName, 'public/current.jpg')
             os.remove(fileName)
