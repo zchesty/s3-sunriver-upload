@@ -38,7 +38,7 @@ while 1:
         if now < sunInfo['dawn']:
             logging.info('Sun has not risen; skipping capture')
         else:
-            print('Sun is up take a photo. Count: %s' % (str(pictures)))
+            logging.info('Taking photo %d', pictures)
             timeStamp = strftime("%Y-%m-%d_%X")     # YYYY-mm-dd_time
             fileName = '8_towhee_' + timeStamp + '.jpg'
             camera.capture_file(fileName)
@@ -50,7 +50,7 @@ while 1:
         sleep(1800)
         now = pst.localize(datetime.datetime.now()) # get the time of now
 
-    print('Finished Taking pictures for the day sun has gone. Total pictues: %s' % str(pictures))
+    logging.info('Day complete; %d photos taken', pictures)
 
     tomorrowCheck = datetime.date.today() # get todays date
     while dateToday == tomorrowCheck:

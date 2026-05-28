@@ -46,7 +46,7 @@ Tracks all identified issues and improvements for the `s3-sunriver-upload` Raspb
 
 | # | Task | State | Notes |
 |---|------|-------|-------|
-| 4.1 | Replace `print()` with `logging` module | `todo` | Logs go nowhere once terminal is closed; use rotating file handler at `/var/log/sunriver-upload.log` |
+| 4.1 | Replace `print()` with `logging` module | `in-progress` | Logs go nowhere once terminal is closed; use rotating file handler at `/var/log/sunriver-upload.log` |
 | 4.2 | Add try/except around camera capture with retry | `todo` | Camera failures silently crash the script |
 | 4.3 | Add try/except around S3 upload with exponential backoff | `todo` | Network dropouts and S3 throttling cause silent crashes; 3 retries recommended |
 | 4.4 | Add SIGTERM / SIGINT signal handling for graceful shutdown | `todo` | Mid-upload interruption can leave bucket in partial state |
