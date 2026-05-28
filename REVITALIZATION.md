@@ -10,7 +10,7 @@ Tracks all identified issues and improvements for the `s3-sunriver-upload` Raspb
 
 | # | Task | State | Notes |
 |---|------|-------|-------|
-| 1.1 | Remove `keys.sh` from repo and git history | `in-progress` | Credentials were passed as CLI args, visible in process list and bash history |
+| 1.1 | Remove `keys.sh` from repo and git history | `done` | Credentials were passed as CLI args, visible in process list and bash history |
 | 1.2 | Rotate the AWS credentials that were committed | `todo` | Treat as compromised; generate new key pair in IAM |
 | 1.3 | Switch to `~/.aws/credentials` file or IAM role auth | `todo` | Never pass secrets as arguments or env vars set in scripts |
 | 1.4 | Scope IAM policy to minimum required permissions | `todo` | Only `s3:PutObject` + `s3:DeleteObject` on `sunriver-display-s3-prod/public/*` |
@@ -25,7 +25,7 @@ Tracks all identified issues and improvements for the `s3-sunriver-upload` Raspb
 | 2.2 | Migrate from `astral` 1.x to 3.x | `todo` | Breaking API change — location and sun() interfaces changed significantly |
 | 2.3 | Replace `picamera` with `picamera2` | `todo` | `picamera` is deprecated on modern Pi OS (Bookworm+) |
 | 2.4 | Regenerate `requirements.txt` with current pinned versions | `todo` | boto3, botocore, pytz, python-dateutil all need updates |
-| 2.5 | Add `pyvenv.cfg` to `.gitignore` | `todo` | Virtual environment config should not be in source control |
+| 2.5 | Add `pyvenv.cfg` to `.gitignore` | `done` | Virtual environment config should not be in source control |
 
 ---
 
@@ -33,11 +33,11 @@ Tracks all identified issues and improvements for the `s3-sunriver-upload` Raspb
 
 | # | Task | State | Notes |
 |---|------|-------|-------|
-| 3.1 | Replace bucket-wipe-on-upload with fixed key overwrite | `in-progress` | `bucket.objects.all().delete()` on every photo is destructive; upload to `public/current.jpg` instead |
-| 3.2 | Fix `time_utils.getDayLight()` return value | `todo` | Function returns the location object instead of the sun timing dict — broken/dead code |
+| 3.1 | Replace bucket-wipe-on-upload with fixed key overwrite | `done` | `bucket.objects.all().delete()` on every photo is destructive; upload to `public/current.jpg` instead |
+| 3.2 | Fix `time_utils.getDayLight()` return value | `in-progress` | Function returns the location object instead of the sun timing dict — broken/dead code |
 | 3.3 | Wire `time_utils` into main script or delete it | `todo` | Currently unused; duplicated inline in `pic-script.py` |
 | 3.4 | Delete `s3_utils.py` or use it | `todo` | `clearBucket()` was extracted but never imported; orphaned dead code |
-| 3.5 | Delete `test2.py` and `test.txt` | `in-progress` | Leftover development scaffolding committed to repo |
+| 3.5 | Delete `test2.py` and `test.txt` | `done` | Leftover development scaffolding committed to repo |
 | 3.6 | Remove or fix `datetime_astral_test.py` | `todo` | Decide if this becomes a proper test or gets deleted |
 
 ---
