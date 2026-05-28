@@ -22,8 +22,8 @@ Tracks all identified issues and improvements for the `s3-sunriver-upload` Raspb
 | # | Task | State | Notes |
 |---|------|-------|-------|
 | 2.1 | Upgrade to Python 3.11 or 3.12 | `todo` | Currently pinned to Python 3.5.3 (EOL Oct 2020) |
-| 2.2 | Migrate from `astral` 1.x to 3.x | `in-progress` | Breaking API change — location and sun() interfaces changed significantly |
-| 2.3 | Replace `picamera` with `picamera2` | `in-progress` | `picamera` is deprecated on modern Pi OS (Bookworm+) |
+| 2.2 | Migrate from `astral` 1.x to 3.x | `done` | Breaking API change — location and sun() interfaces changed significantly |
+| 2.3 | Replace `picamera` with `picamera2` | `done` | `picamera` is deprecated on modern Pi OS (Bookworm+) |
 | 2.4 | Regenerate `requirements.txt` with current pinned versions | `todo` | boto3, botocore, pytz, python-dateutil all need updates |
 | 2.5 | Add `pyvenv.cfg` to `.gitignore` | `done` | Virtual environment config should not be in source control |
 
@@ -34,11 +34,11 @@ Tracks all identified issues and improvements for the `s3-sunriver-upload` Raspb
 | # | Task | State | Notes |
 |---|------|-------|-------|
 | 3.1 | Replace bucket-wipe-on-upload with fixed key overwrite | `done` | `bucket.objects.all().delete()` on every photo is destructive; upload to `public/current.jpg` instead |
-| 3.2 | Fix `time_utils.getDayLight()` return value | `in-progress` | Function returns the location object instead of the sun timing dict — broken/dead code |
+| 3.2 | Fix `time_utils.getDayLight()` return value | `done` | Function returns the location object instead of the sun timing dict — broken/dead code |
 | 3.3 | Wire `time_utils` into main script or delete it | `todo` | Currently unused; duplicated inline in `pic-script.py` |
-| 3.4 | Delete `s3_utils.py` or use it | `in-progress` | `clearBucket()` was extracted but never imported; orphaned dead code |
+| 3.4 | Delete `s3_utils.py` or use it | `done` | `clearBucket()` was extracted but never imported; orphaned dead code |
 | 3.5 | Delete `test2.py` and `test.txt` | `done` | Leftover development scaffolding committed to repo |
-| 3.6 | Remove or fix `datetime_astral_test.py` | `in-progress` | Decide if this becomes a proper test or gets deleted |
+| 3.6 | Remove or fix `datetime_astral_test.py` | `done` | Decide if this becomes a proper test or gets deleted |
 
 ---
 
@@ -46,7 +46,7 @@ Tracks all identified issues and improvements for the `s3-sunriver-upload` Raspb
 
 | # | Task | State | Notes |
 |---|------|-------|-------|
-| 4.1 | Replace `print()` with `logging` module | `in-progress` | Logs go nowhere once terminal is closed; use rotating file handler at `/var/log/sunriver-upload.log` |
+| 4.1 | Replace `print()` with `logging` module | `done` | Logs go nowhere once terminal is closed; use rotating file handler at `/var/log/sunriver-upload.log` |
 | 4.2 | Add try/except around camera capture with retry | `todo` | Camera failures silently crash the script |
 | 4.3 | Add try/except around S3 upload with exponential backoff | `todo` | Network dropouts and S3 throttling cause silent crashes; 3 retries recommended |
 | 4.4 | Add SIGTERM / SIGINT signal handling for graceful shutdown | `todo` | Mid-upload interruption can leave bucket in partial state |
